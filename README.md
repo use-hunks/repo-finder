@@ -2,6 +2,8 @@
 
 repo_finderは、GitHubリポジトリを検索して、特定の条件に一致するリポジトリを表示するFlutterアプリケーションです。
 
+このプロジェクトは，[株式会社ゆめみ Flutter エンジニアコードチェック課題](https://github.com/yumemi-inc/flutter-engineer-codecheck)に対する回答です。
+
 ## 概要
 
 このアプリは、GitHubのAPIを使用してリポジトリを検索し、ユーザーが指定した条件に一致するリポジトリの情報をリスト形式で表示します。リポジトリには、名前、オーナー、言語、スター数、ウォッチャー数などの基本情報が含まれます。
@@ -19,7 +21,7 @@ repo_finderは、GitHubリポジトリを検索して、特定の条件に一致
    ```bash
    git clone https://github.com/use-hunks/repo_finder.git
    ```
-2. 依存関係のインストール
+2. 依存関係のインストールします
     ```bash
     cd repo_finder
     flutter pub get
@@ -28,7 +30,7 @@ repo_finderは、GitHubリポジトリを検索して、特定の条件に一致
     ```
     GITHUB_API_TOKEN = <YOUR_GITHUB_API_TOKEN>
     ```
-4. アプリを実行
+4. アプリを実行します
     ```
     flutter run
     ```
