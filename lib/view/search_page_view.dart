@@ -11,6 +11,7 @@ class SearchPageView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final repositories = ref.watch(repositoriesViewModelProvider); // リポジトリ情報を取得,消したらうまくいかない
     return Scaffold(
       appBar: AppBar(
         title: const Text('Search'),

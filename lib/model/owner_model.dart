@@ -8,6 +8,7 @@ class OwnerModel with _$OwnerModel {
   const factory OwnerModel({
     required int id,
     required String login,
+    required String avatar_url,
      }) = _OwnerModel;
 
   factory OwnerModel.fromJson(Map<String, dynamic> json) =>

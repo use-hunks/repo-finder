@@ -14,7 +14,6 @@ _$RepositoryModelImpl _$$RepositoryModelImplFromJson(
       owner: json['owner'] == null
           ? null
           : OwnerModel.fromJson(json['owner'] as Map<String, dynamic>),
-      avatar_url: json['avatar_url'] as String?,
       html_url: json['html_url'] as String?,
       description: json['description'] as String?,
       language: json['language'] as String?,
@@ -30,7 +29,6 @@ Map<String, dynamic> _$$RepositoryModelImplToJson(
       'id': instance.id,
       'name': instance.name,
       'owner': instance.owner,
-      'avatar_url': instance.avatar_url,
       'html_url': instance.html_url,
       'description': instance.description,
       'language': instance.language,

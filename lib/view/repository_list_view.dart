@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:repo_finder/view/repository_detail.dart';
 import 'package:repo_finder/view_model/repositories_view_model.dart';
 
 class RepositoryListView extends ConsumerWidget {
@@ -30,6 +31,13 @@ class RepositoryListView extends ConsumerWidget {
                           icon: const Icon(Icons.link),
                           onPressed: () {
                             // TODO: 詳細画面に遷移
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    RepositoryDetail(repository: repository),
+                              ),
+                            );
                           },
                         ),
                       );
