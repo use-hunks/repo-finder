@@ -20,16 +20,17 @@ RepositoryModel _$RepositoryModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RepositoryModel {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get fullName => throw _privateConstructorUsedError;
-  String get ownerName => throw _privateConstructorUsedError;
-  String get ownerIconUrl => throw _privateConstructorUsedError;
-  String get language => throw _privateConstructorUsedError;
-  int get stars => throw _privateConstructorUsedError;
-  int get watchers => throw _privateConstructorUsedError;
-  int get forks => throw _privateConstructorUsedError;
-  int get openIssues => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError; //リポジトリ名
+  OwnerModel? get owner => throw _privateConstructorUsedError;
+  String? get avatar_url => throw _privateConstructorUsedError;
+  String? get html_url => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get language => throw _privateConstructorUsedError;
+  int? get stargazers_count => throw _privateConstructorUsedError;
+  int? get watchers_count => throw _privateConstructorUsedError;
+  int? get forks_count => throw _privateConstructorUsedError;
+  int? get open_issues_count => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,16 +45,19 @@ abstract class $RepositoryModelCopyWith<$Res> {
       _$RepositoryModelCopyWithImpl<$Res, RepositoryModel>;
   @useResult
   $Res call(
-      {String id,
-      String name,
-      String fullName,
-      String ownerName,
-      String ownerIconUrl,
-      String language,
-      int stars,
-      int watchers,
-      int forks,
-      int openIssues});
+      {int id,
+      String? name,
+      OwnerModel? owner,
+      String? avatar_url,
+      String? html_url,
+      String? description,
+      String? language,
+      int? stargazers_count,
+      int? watchers_count,
+      int? forks_count,
+      int? open_issues_count});
+
+  $OwnerModelCopyWith<$Res>? get owner;
 }
 
 /// @nodoc
@@ -70,58 +74,75 @@ class _$RepositoryModelCopyWithImpl<$Res, $Val extends RepositoryModel>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? fullName = null,
-    Object? ownerName = null,
-    Object? ownerIconUrl = null,
-    Object? language = null,
-    Object? stars = null,
-    Object? watchers = null,
-    Object? forks = null,
-    Object? openIssues = null,
+    Object? name = freezed,
+    Object? owner = freezed,
+    Object? avatar_url = freezed,
+    Object? html_url = freezed,
+    Object? description = freezed,
+    Object? language = freezed,
+    Object? stargazers_count = freezed,
+    Object? watchers_count = freezed,
+    Object? forks_count = freezed,
+    Object? open_issues_count = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+              as int,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
-      ownerName: null == ownerName
-          ? _value.ownerName
-          : ownerName // ignore: cast_nullable_to_non_nullable
-              as String,
-      ownerIconUrl: null == ownerIconUrl
-          ? _value.ownerIconUrl
-          : ownerIconUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      language: null == language
+              as String?,
+      owner: freezed == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as OwnerModel?,
+      avatar_url: freezed == avatar_url
+          ? _value.avatar_url
+          : avatar_url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      html_url: freezed == html_url
+          ? _value.html_url
+          : html_url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
-      stars: null == stars
-          ? _value.stars
-          : stars // ignore: cast_nullable_to_non_nullable
-              as int,
-      watchers: null == watchers
-          ? _value.watchers
-          : watchers // ignore: cast_nullable_to_non_nullable
-              as int,
-      forks: null == forks
-          ? _value.forks
-          : forks // ignore: cast_nullable_to_non_nullable
-              as int,
-      openIssues: null == openIssues
-          ? _value.openIssues
-          : openIssues // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
+      stargazers_count: freezed == stargazers_count
+          ? _value.stargazers_count
+          : stargazers_count // ignore: cast_nullable_to_non_nullable
+              as int?,
+      watchers_count: freezed == watchers_count
+          ? _value.watchers_count
+          : watchers_count // ignore: cast_nullable_to_non_nullable
+              as int?,
+      forks_count: freezed == forks_count
+          ? _value.forks_count
+          : forks_count // ignore: cast_nullable_to_non_nullable
+              as int?,
+      open_issues_count: freezed == open_issues_count
+          ? _value.open_issues_count
+          : open_issues_count // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OwnerModelCopyWith<$Res>? get owner {
+    if (_value.owner == null) {
+      return null;
+    }
+
+    return $OwnerModelCopyWith<$Res>(_value.owner!, (value) {
+      return _then(_value.copyWith(owner: value) as $Val);
+    });
   }
 }
 
@@ -134,16 +155,20 @@ abstract class _$$RepositoryModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id,
-      String name,
-      String fullName,
-      String ownerName,
-      String ownerIconUrl,
-      String language,
-      int stars,
-      int watchers,
-      int forks,
-      int openIssues});
+      {int id,
+      String? name,
+      OwnerModel? owner,
+      String? avatar_url,
+      String? html_url,
+      String? description,
+      String? language,
+      int? stargazers_count,
+      int? watchers_count,
+      int? forks_count,
+      int? open_issues_count});
+
+  @override
+  $OwnerModelCopyWith<$Res>? get owner;
 }
 
 /// @nodoc
@@ -158,57 +183,62 @@ class __$$RepositoryModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? name = null,
-    Object? fullName = null,
-    Object? ownerName = null,
-    Object? ownerIconUrl = null,
-    Object? language = null,
-    Object? stars = null,
-    Object? watchers = null,
-    Object? forks = null,
-    Object? openIssues = null,
+    Object? name = freezed,
+    Object? owner = freezed,
+    Object? avatar_url = freezed,
+    Object? html_url = freezed,
+    Object? description = freezed,
+    Object? language = freezed,
+    Object? stargazers_count = freezed,
+    Object? watchers_count = freezed,
+    Object? forks_count = freezed,
+    Object? open_issues_count = freezed,
   }) {
     return _then(_$RepositoryModelImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
+              as int,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      fullName: null == fullName
-          ? _value.fullName
-          : fullName // ignore: cast_nullable_to_non_nullable
-              as String,
-      ownerName: null == ownerName
-          ? _value.ownerName
-          : ownerName // ignore: cast_nullable_to_non_nullable
-              as String,
-      ownerIconUrl: null == ownerIconUrl
-          ? _value.ownerIconUrl
-          : ownerIconUrl // ignore: cast_nullable_to_non_nullable
-              as String,
-      language: null == language
+              as String?,
+      owner: freezed == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as OwnerModel?,
+      avatar_url: freezed == avatar_url
+          ? _value.avatar_url
+          : avatar_url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      html_url: freezed == html_url
+          ? _value.html_url
+          : html_url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
-      stars: null == stars
-          ? _value.stars
-          : stars // ignore: cast_nullable_to_non_nullable
-              as int,
-      watchers: null == watchers
-          ? _value.watchers
-          : watchers // ignore: cast_nullable_to_non_nullable
-              as int,
-      forks: null == forks
-          ? _value.forks
-          : forks // ignore: cast_nullable_to_non_nullable
-              as int,
-      openIssues: null == openIssues
-          ? _value.openIssues
-          : openIssues // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
+      stargazers_count: freezed == stargazers_count
+          ? _value.stargazers_count
+          : stargazers_count // ignore: cast_nullable_to_non_nullable
+              as int?,
+      watchers_count: freezed == watchers_count
+          ? _value.watchers_count
+          : watchers_count // ignore: cast_nullable_to_non_nullable
+              as int?,
+      forks_count: freezed == forks_count
+          ? _value.forks_count
+          : forks_count // ignore: cast_nullable_to_non_nullable
+              as int?,
+      open_issues_count: freezed == open_issues_count
+          ? _value.open_issues_count
+          : open_issues_count // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -219,42 +249,46 @@ class _$RepositoryModelImpl implements _RepositoryModel {
   const _$RepositoryModelImpl(
       {required this.id,
       required this.name,
-      required this.fullName,
-      required this.ownerName,
-      required this.ownerIconUrl,
+      required this.owner,
+      required this.avatar_url,
+      required this.html_url,
+      required this.description,
       required this.language,
-      required this.stars,
-      required this.watchers,
-      required this.forks,
-      required this.openIssues});
+      required this.stargazers_count,
+      required this.watchers_count,
+      required this.forks_count,
+      required this.open_issues_count});
 
   factory _$RepositoryModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$RepositoryModelImplFromJson(json);
 
   @override
-  final String id;
+  final int id;
   @override
-  final String name;
+  final String? name;
+//リポジトリ名
   @override
-  final String fullName;
+  final OwnerModel? owner;
   @override
-  final String ownerName;
+  final String? avatar_url;
   @override
-  final String ownerIconUrl;
+  final String? html_url;
   @override
-  final String language;
+  final String? description;
   @override
-  final int stars;
+  final String? language;
   @override
-  final int watchers;
+  final int? stargazers_count;
   @override
-  final int forks;
+  final int? watchers_count;
   @override
-  final int openIssues;
+  final int? forks_count;
+  @override
+  final int? open_issues_count;
 
   @override
   String toString() {
-    return 'RepositoryModel(id: $id, name: $name, fullName: $fullName, ownerName: $ownerName, ownerIconUrl: $ownerIconUrl, language: $language, stars: $stars, watchers: $watchers, forks: $forks, openIssues: $openIssues)';
+    return 'RepositoryModel(id: $id, name: $name, owner: $owner, avatar_url: $avatar_url, html_url: $html_url, description: $description, language: $language, stargazers_count: $stargazers_count, watchers_count: $watchers_count, forks_count: $forks_count, open_issues_count: $open_issues_count)';
   }
 
   @override
@@ -264,26 +298,40 @@ class _$RepositoryModelImpl implements _RepositoryModel {
             other is _$RepositoryModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.fullName, fullName) ||
-                other.fullName == fullName) &&
-            (identical(other.ownerName, ownerName) ||
-                other.ownerName == ownerName) &&
-            (identical(other.ownerIconUrl, ownerIconUrl) ||
-                other.ownerIconUrl == ownerIconUrl) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
+            (identical(other.avatar_url, avatar_url) ||
+                other.avatar_url == avatar_url) &&
+            (identical(other.html_url, html_url) ||
+                other.html_url == html_url) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.language, language) ||
                 other.language == language) &&
-            (identical(other.stars, stars) || other.stars == stars) &&
-            (identical(other.watchers, watchers) ||
-                other.watchers == watchers) &&
-            (identical(other.forks, forks) || other.forks == forks) &&
-            (identical(other.openIssues, openIssues) ||
-                other.openIssues == openIssues));
+            (identical(other.stargazers_count, stargazers_count) ||
+                other.stargazers_count == stargazers_count) &&
+            (identical(other.watchers_count, watchers_count) ||
+                other.watchers_count == watchers_count) &&
+            (identical(other.forks_count, forks_count) ||
+                other.forks_count == forks_count) &&
+            (identical(other.open_issues_count, open_issues_count) ||
+                other.open_issues_count == open_issues_count));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, fullName, ownerName,
-      ownerIconUrl, language, stars, watchers, forks, openIssues);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      owner,
+      avatar_url,
+      html_url,
+      description,
+      language,
+      stargazers_count,
+      watchers_count,
+      forks_count,
+      open_issues_count);
 
   @JsonKey(ignore: true)
   @override
@@ -302,40 +350,43 @@ class _$RepositoryModelImpl implements _RepositoryModel {
 
 abstract class _RepositoryModel implements RepositoryModel {
   const factory _RepositoryModel(
-      {required final String id,
-      required final String name,
-      required final String fullName,
-      required final String ownerName,
-      required final String ownerIconUrl,
-      required final String language,
-      required final int stars,
-      required final int watchers,
-      required final int forks,
-      required final int openIssues}) = _$RepositoryModelImpl;
+      {required final int id,
+      required final String? name,
+      required final OwnerModel? owner,
+      required final String? avatar_url,
+      required final String? html_url,
+      required final String? description,
+      required final String? language,
+      required final int? stargazers_count,
+      required final int? watchers_count,
+      required final int? forks_count,
+      required final int? open_issues_count}) = _$RepositoryModelImpl;
 
   factory _RepositoryModel.fromJson(Map<String, dynamic> json) =
       _$RepositoryModelImpl.fromJson;
 
   @override
-  String get id;
+  int get id;
   @override
-  String get name;
+  String? get name;
+  @override //リポジトリ名
+  OwnerModel? get owner;
   @override
-  String get fullName;
+  String? get avatar_url;
   @override
-  String get ownerName;
+  String? get html_url;
   @override
-  String get ownerIconUrl;
+  String? get description;
   @override
-  String get language;
+  String? get language;
   @override
-  int get stars;
+  int? get stargazers_count;
   @override
-  int get watchers;
+  int? get watchers_count;
   @override
-  int get forks;
+  int? get forks_count;
   @override
-  int get openIssues;
+  int? get open_issues_count;
   @override
   @JsonKey(ignore: true)
   _$$RepositoryModelImplCopyWith<_$RepositoryModelImpl> get copyWith =>

@@ -1,18 +1,17 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:repo_finder/view/repository_list_view.dart';
+import 'package:repo_finder/view_model/repositories_view_model.dart';
 
-class SearchPageView extends StatefulWidget {
-  const SearchPageView({super.key});
+class SearchPageView extends ConsumerWidget {
+  SearchPageView({super.key});
 
-  @override
-  _SearchPageViewState createState() => _SearchPageViewState();
-}
-
-class _SearchPageViewState extends State<SearchPageView> {
   final TextEditingController _controller = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final repositories = ref.watch(repositoriesViewModelProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Search'),
@@ -30,8 +29,15 @@ class _SearchPageViewState extends State<SearchPageView> {
             ElevatedButton(
               onPressed: () {
                 final String query = _controller.text;
-                // TODO: APIを叩いてリポジトリ情報を取得する処理を書く
+                // APIを叩いてリポジトリ情報を取得する処理を書く
+                ref.read(repositoriesViewModelProvider.notifier).searchRepositories(query);
                 // TODO: 一覧画面に遷移する
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => RepositoryListView(), // 遷移先の画面
+                  ),
+                );
               },
               child: const Text('Search'),
             ),
