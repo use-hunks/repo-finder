@@ -1,41 +1,24 @@
-class RepositoryModel {
-  final String id;
-  final String name;
-  final String fullName;
-  final String ownerName;
-  final String ownerIconUrl;
-  final String language;
-  final int stars;
-  final int watchers;
-  final int forks;
-  final int openIssues;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  RepositoryModel({
-    required this.id,
-    required this.name,
-    required this.fullName,
-    required this.ownerName,
-    required this.ownerIconUrl,
-    required this.language,
-    required this.stars,
-    required this.watchers,
-    required this.forks,
-    required this.openIssues,
-  });
+part 'repository_model.freezed.dart';
+part 'repository_model.g.dart'; // JSON変換に必要
+
+@freezed
+class RepositoryModel with _$RepositoryModel {
+  const factory RepositoryModel({
+    required String id,
+    required String name,
+    required String fullName,
+    required String ownerName,
+    required String ownerIconUrl,
+    required String language,
+    required int stars,
+    required int watchers,
+    required int forks,
+    required int openIssues,
+  }) = _RepositoryModel;
 
   // JSONからRepositoryモデルに変換するファクトリーメソッド
-  factory RepositoryModel.fromJson(Map<String, dynamic> json) {
-    return RepositoryModel(
-      id: json['id'].toString(),
-      name: json['name'],
-      fullName: json['full_name'],
-      ownerName: json['owner']['login'],
-      ownerIconUrl: json['owner']['avatar_url'],
-      language: json['language'] ?? 'N/A', // 言語が指定されていない場合は 'N/A'
-      stars: json['stargazers_count'],
-      watchers: json['watchers_count'],
-      forks: json['forks_count'],
-      openIssues: json['open_issues_count'],
-    );
-  }
+  factory RepositoryModel.fromJson(Map<String, dynamic> json) =>
+      _$RepositoryModelFromJson(json);
 }
