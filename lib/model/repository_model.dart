@@ -10,7 +10,6 @@ class RepositoryModel with _$RepositoryModel {
     required int id,
     required String? name, //リポジトリ名
     required OwnerModel? owner,
-    required String? avatar_url,
     required String? html_url,
     required String? description,
     required String? language,

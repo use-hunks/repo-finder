@@ -22,6 +22,7 @@ OwnerModel _$OwnerModelFromJson(Map<String, dynamic> json) {
 mixin _$OwnerModel {
   int get id => throw _privateConstructorUsedError;
   String get login => throw _privateConstructorUsedError;
+  String get avatar_url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $OwnerModelCopyWith<$Res> {
           OwnerModel value, $Res Function(OwnerModel) then) =
       _$OwnerModelCopyWithImpl<$Res, OwnerModel>;
   @useResult
-  $Res call({int id, String login});
+  $Res call({int id, String login, String avatar_url});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$OwnerModelCopyWithImpl<$Res, $Val extends OwnerModel>
   $Res call({
     Object? id = null,
     Object? login = null,
+    Object? avatar_url = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -62,6 +64,10 @@ class _$OwnerModelCopyWithImpl<$Res, $Val extends OwnerModel>
       login: null == login
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
+              as String,
+      avatar_url: null == avatar_url
+          ? _value.avatar_url
+          : avatar_url // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -75,7 +81,7 @@ abstract class _$$OwnerModelImplCopyWith<$Res>
       __$$OwnerModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String login});
+  $Res call({int id, String login, String avatar_url});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$OwnerModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? login = null,
+    Object? avatar_url = null,
   }) {
     return _then(_$OwnerModelImpl(
       id: null == id
@@ -101,6 +108,10 @@ class __$$OwnerModelImplCopyWithImpl<$Res>
           ? _value.login
           : login // ignore: cast_nullable_to_non_nullable
               as String,
+      avatar_url: null == avatar_url
+          ? _value.avatar_url
+          : avatar_url // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -108,7 +119,8 @@ class __$$OwnerModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$OwnerModelImpl implements _OwnerModel {
-  const _$OwnerModelImpl({required this.id, required this.login});
+  const _$OwnerModelImpl(
+      {required this.id, required this.login, required this.avatar_url});
 
   factory _$OwnerModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$OwnerModelImplFromJson(json);
@@ -117,10 +129,12 @@ class _$OwnerModelImpl implements _OwnerModel {
   final int id;
   @override
   final String login;
+  @override
+  final String avatar_url;
 
   @override
   String toString() {
-    return 'OwnerModel(id: $id, login: $login)';
+    return 'OwnerModel(id: $id, login: $login, avatar_url: $avatar_url)';
   }
 
   @override
@@ -129,12 +143,14 @@ class _$OwnerModelImpl implements _OwnerModel {
         (other.runtimeType == runtimeType &&
             other is _$OwnerModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.login, login) || other.login == login));
+            (identical(other.login, login) || other.login == login) &&
+            (identical(other.avatar_url, avatar_url) ||
+                other.avatar_url == avatar_url));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, login);
+  int get hashCode => Object.hash(runtimeType, id, login, avatar_url);
 
   @JsonKey(ignore: true)
   @override
@@ -152,7 +168,9 @@ class _$OwnerModelImpl implements _OwnerModel {
 
 abstract class _OwnerModel implements OwnerModel {
   const factory _OwnerModel(
-      {required final int id, required final String login}) = _$OwnerModelImpl;
+      {required final int id,
+      required final String login,
+      required final String avatar_url}) = _$OwnerModelImpl;
 
   factory _OwnerModel.fromJson(Map<String, dynamic> json) =
       _$OwnerModelImpl.fromJson;
@@ -161,6 +179,8 @@ abstract class _OwnerModel implements OwnerModel {
   int get id;
   @override
   String get login;
+  @override
+  String get avatar_url;
   @override
   @JsonKey(ignore: true)
   _$$OwnerModelImplCopyWith<_$OwnerModelImpl> get copyWith =>

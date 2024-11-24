@@ -23,7 +23,6 @@ mixin _$RepositoryModel {
   int get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError; //リポジトリ名
   OwnerModel? get owner => throw _privateConstructorUsedError;
-  String? get avatar_url => throw _privateConstructorUsedError;
   String? get html_url => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get language => throw _privateConstructorUsedError;
@@ -48,7 +47,6 @@ abstract class $RepositoryModelCopyWith<$Res> {
       {int id,
       String? name,
       OwnerModel? owner,
-      String? avatar_url,
       String? html_url,
       String? description,
       String? language,
@@ -76,7 +74,6 @@ class _$RepositoryModelCopyWithImpl<$Res, $Val extends RepositoryModel>
     Object? id = null,
     Object? name = freezed,
     Object? owner = freezed,
-    Object? avatar_url = freezed,
     Object? html_url = freezed,
     Object? description = freezed,
     Object? language = freezed,
@@ -98,10 +95,6 @@ class _$RepositoryModelCopyWithImpl<$Res, $Val extends RepositoryModel>
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as OwnerModel?,
-      avatar_url: freezed == avatar_url
-          ? _value.avatar_url
-          : avatar_url // ignore: cast_nullable_to_non_nullable
-              as String?,
       html_url: freezed == html_url
           ? _value.html_url
           : html_url // ignore: cast_nullable_to_non_nullable
@@ -158,7 +151,6 @@ abstract class _$$RepositoryModelImplCopyWith<$Res>
       {int id,
       String? name,
       OwnerModel? owner,
-      String? avatar_url,
       String? html_url,
       String? description,
       String? language,
@@ -185,7 +177,6 @@ class __$$RepositoryModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = freezed,
     Object? owner = freezed,
-    Object? avatar_url = freezed,
     Object? html_url = freezed,
     Object? description = freezed,
     Object? language = freezed,
@@ -207,10 +198,6 @@ class __$$RepositoryModelImplCopyWithImpl<$Res>
           ? _value.owner
           : owner // ignore: cast_nullable_to_non_nullable
               as OwnerModel?,
-      avatar_url: freezed == avatar_url
-          ? _value.avatar_url
-          : avatar_url // ignore: cast_nullable_to_non_nullable
-              as String?,
       html_url: freezed == html_url
           ? _value.html_url
           : html_url // ignore: cast_nullable_to_non_nullable
@@ -250,7 +237,6 @@ class _$RepositoryModelImpl implements _RepositoryModel {
       {required this.id,
       required this.name,
       required this.owner,
-      required this.avatar_url,
       required this.html_url,
       required this.description,
       required this.language,
@@ -270,8 +256,6 @@ class _$RepositoryModelImpl implements _RepositoryModel {
   @override
   final OwnerModel? owner;
   @override
-  final String? avatar_url;
-  @override
   final String? html_url;
   @override
   final String? description;
@@ -288,7 +272,7 @@ class _$RepositoryModelImpl implements _RepositoryModel {
 
   @override
   String toString() {
-    return 'RepositoryModel(id: $id, name: $name, owner: $owner, avatar_url: $avatar_url, html_url: $html_url, description: $description, language: $language, stargazers_count: $stargazers_count, watchers_count: $watchers_count, forks_count: $forks_count, open_issues_count: $open_issues_count)';
+    return 'RepositoryModel(id: $id, name: $name, owner: $owner, html_url: $html_url, description: $description, language: $language, stargazers_count: $stargazers_count, watchers_count: $watchers_count, forks_count: $forks_count, open_issues_count: $open_issues_count)';
   }
 
   @override
@@ -299,8 +283,6 @@ class _$RepositoryModelImpl implements _RepositoryModel {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.owner, owner) || other.owner == owner) &&
-            (identical(other.avatar_url, avatar_url) ||
-                other.avatar_url == avatar_url) &&
             (identical(other.html_url, html_url) ||
                 other.html_url == html_url) &&
             (identical(other.description, description) ||
@@ -324,7 +306,6 @@ class _$RepositoryModelImpl implements _RepositoryModel {
       id,
       name,
       owner,
-      avatar_url,
       html_url,
       description,
       language,
@@ -353,7 +334,6 @@ abstract class _RepositoryModel implements RepositoryModel {
       {required final int id,
       required final String? name,
       required final OwnerModel? owner,
-      required final String? avatar_url,
       required final String? html_url,
       required final String? description,
       required final String? language,
@@ -371,8 +351,6 @@ abstract class _RepositoryModel implements RepositoryModel {
   String? get name;
   @override //リポジトリ名
   OwnerModel? get owner;
-  @override
-  String? get avatar_url;
   @override
   String? get html_url;
   @override

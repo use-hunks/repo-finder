@@ -12,8 +12,10 @@ class RepositoriesViewModel extends _$RepositoriesViewModel {
   List<RepositoryModel> build() {
     return [];
   }
+  bool isLoading = false;
 
   Future<void> searchRepositories(String query) async {
+    isLoading = true;
     state = []; // 検索を開始する前に現在の結果をクリア
 
     final url = Uri.parse(
@@ -34,5 +36,6 @@ class RepositoriesViewModel extends _$RepositoriesViewModel {
     } else {
       throw Exception('Failed to load repositories');
     }
+    isLoading = false;
   }
 }
