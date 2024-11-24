@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:repo_finder/view_model/repositories_view_model.dart';
 
 class RepositoryListView extends ConsumerWidget {
-  const RepositoryListView({Key? key}) : super(key: key);
+  const RepositoryListView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

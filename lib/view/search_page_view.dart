@@ -11,7 +11,6 @@ class SearchPageView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final repositories = ref.watch(repositoriesViewModelProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Search'),
@@ -31,11 +30,11 @@ class SearchPageView extends ConsumerWidget {
                 final String query = _controller.text;
                 // APIを叩いてリポジトリ情報を取得する処理を書く
                 ref.read(repositoriesViewModelProvider.notifier).searchRepositories(query);
-                // TODO: 一覧画面に遷移する
+                // 一覧画面に遷移する
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => RepositoryListView(), // 遷移先の画面
+                    builder: (context) => const RepositoryListView(), // 遷移先の画面
                   ),
                 );
               },
