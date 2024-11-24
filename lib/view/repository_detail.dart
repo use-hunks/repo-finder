@@ -10,7 +10,7 @@ class RepositoryDetail extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Repository Detail'),
-        backgroundColor: Colors.teal, 
+        backgroundColor: Colors.teal,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -52,6 +52,7 @@ class RepositoryDetail extends StatelessWidget {
               _buildInfoRow("Forks", repository.forks_count.toString()),
               _buildInfoRow(
                   "Open Issues", repository.open_issues_count.toString()),
+              _buildInfoRow("Link", repository.html_url),
             ],
           ),
         ),
@@ -70,9 +71,14 @@ class RepositoryDetail extends StatelessWidget {
             label,
             style: const TextStyle(fontSize: 16, color: Colors.grey),
           ),
-          Text(
-            value,
-            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          const SizedBox(width: 8.0),
+          Expanded(
+            child: Text(value,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.end,),
           ),
         ],
       ),

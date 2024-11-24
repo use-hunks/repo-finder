@@ -8,14 +8,13 @@ class RepositoryListView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // RepositoriesViewModelの状態を取得
     final repositories = ref.watch(repositoriesViewModelProvider);
-
+    final isLoading = ref.watch(repositoriesViewModelProvider.notifier).isLoading;
     return Scaffold(
       appBar: AppBar(
         title: const Text('GitHub Repositories'),
-        backgroundColor: Colors.teal, // アプリバーの色を変更
-        elevation: 4, // アプリバーの影を追加
+        backgroundColor: Colors.teal, 
+        elevation: 4, 
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -38,58 +37,62 @@ class RepositoryListView extends ConsumerWidget {
             ),
             // リストビュー
             Expanded(
-              child: repositories.isEmpty
-                  ? const Center(
-                      child: Text('No repositories found.',
-                          style: TextStyle(fontSize: 18)))
-                  : ListView.builder(
-                      itemCount: repositories.length,
-                      itemBuilder: (context, index) {
-                        final repository = repositories[index];
-                        return Card(
-                          margin: const EdgeInsets.symmetric(vertical: 8.0),
-                          elevation: 3,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12), // 角丸
-                          ),
-                          child: ListTile(
-                            contentPadding: const EdgeInsets.all(16.0),
-                            leading: CircleAvatar(
-                              radius: 24,
-                              backgroundImage: NetworkImage(repository
-                                      .owner?.avatar_url ??
-                                  'https://via.placeholder.com/150'), // アイコン画像
-                            ),
-                            title: Text(
-                              repository.name ?? 'No name',
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 16),
-                            ),
-                            subtitle: Text(
-                              repository.description ??
-                                  'No description available.',
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                  fontSize: 14, color: Colors.grey),
-                            ),
-                            trailing: IconButton(
-                              icon: const Icon(Icons.link, color: Colors.teal),
-                              onPressed: () {
-                                // 詳細画面に遷移
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => RepositoryDetail(
-                                        repository: repository),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+              child: isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : repositories.isEmpty
+                      ? const Center(
+                          child: Text('No repositories found.',
+                              style: TextStyle(fontSize: 18)))
+                      : ListView.builder(
+                          itemCount: repositories.length,
+                          itemBuilder: (context, index) {
+                            final repository = repositories[index];
+                            return Card(
+                              margin: const EdgeInsets.symmetric(vertical: 8.0),
+                              elevation: 3,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12), 
+                              ),
+                              child: ListTile(
+                                contentPadding: const EdgeInsets.all(16.0),
+                                leading: CircleAvatar(
+                                  radius: 24,
+                                  backgroundImage: NetworkImage(repository
+                                          .owner?.avatar_url ??
+                                      'https://via.placeholder.com/150'), 
+                                ),
+                                title: Text(
+                                  repository.name ?? 'No name',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
+                                ),
+                                subtitle: Text(
+                                  repository.description ??
+                                      'No description available.',
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      fontSize: 14, color: Colors.grey),
+                                ),
+                                trailing: IconButton(
+                                  icon: const Icon(Icons.link,
+                                      color: Colors.teal),
+                                  onPressed: () {
+                                    // 詳細画面に遷移
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => RepositoryDetail(
+                                            repository: repository),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            );
+                          },
+                        ),
             ),
           ],
         ),
