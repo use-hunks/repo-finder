@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class RepositoryDetail extends StatelessWidget{
+class RepositoryDetail extends StatelessWidget {
   final dynamic repository;
+
   const RepositoryDetail({super.key, required this.repository});
 
   @override
@@ -9,30 +10,70 @@ class RepositoryDetail extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title: const Text('Repository Detail'),
+        backgroundColor: Colors.teal, 
       ),
-      body: Column(
-        children: [
-          // リポジトリの詳細情報を表示する
-          Text("Name: ${repository.name}", style: const TextStyle(fontSize: 18)),
-          const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          // スクロール可能にして長い内容でも表示
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CircleAvatar(
-                backgroundImage:
-                    NetworkImage(repository.owner.avatar_url??"https://www.google.com/imgres?q=panda&imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F0%2F0f%2FGrosser_Panda.JPG%2F640px-Grosser_Panda.JPG&imgrefurl=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGiant_panda&docid=LND7YqRqFVVnjM&tbnid=VnnmxDJtpkElkM&vet=12ahUKEwj16pb2x_SJAxUTqVYBHTysGFoQM3oECBoQAA..i&w=640&h=427&hcb=2&ved=2ahUKEwj16pb2x_SJAxUTqVYBHTysGFoQM3oECBoQAA"),
+              // リポジトリの名前表示
+              Text(
+                "Name: ${repository.name}",
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(width: 8),
-              Text("Owner: ${repository.owner.login}",
-                  style: const TextStyle(fontSize: 16)),
+              const SizedBox(height: 16),
+
+              // オーナーの情報
+              Row(
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundImage: NetworkImage(repository.owner.avatar_url ??
+                        'https://via.placeholder.com/150'),
+                  ),
+                  const SizedBox(width: 12),
+                  Text(
+                    "Owner: ${repository.owner.login}",
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.w500),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+
+              // リポジトリの詳細情報
+              _buildInfoRow("Language", repository.language ?? 'N/A'),
+              _buildInfoRow("Stars", repository.stargazers_count.toString()),
+              _buildInfoRow("Watchers", repository.watchers_count.toString()),
+              _buildInfoRow("Forks", repository.forks_count.toString()),
+              _buildInfoRow(
+                  "Open Issues", repository.open_issues_count.toString()),
             ],
           ),
-          const SizedBox(height: 16),
-          Text("Language: ${repository.language ?? 'N/A'}"),
-          Text("Stars: ${repository.stargazers_count}"),
-          Text("Watchers: ${repository.watchers_count}"),
-          Text("Forks: ${repository.forks_count}"),
-          Text("Open Issues: ${repository.open_issues_count}"),
+        ),
+      ),
+    );
+  }
+
+  // 共通の情報行を作成するウィジェット
+  Widget _buildInfoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
+            style: const TextStyle(fontSize: 16, color: Colors.grey),
+          ),
+          Text(
+            value,
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+          ),
         ],
       ),
     );
